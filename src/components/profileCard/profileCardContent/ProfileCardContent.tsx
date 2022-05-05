@@ -10,7 +10,7 @@ export interface IProfileCardContentProps {
 const ProfileCardContent: FunctionComponent<IProfileCardContentProps> = ({ name, login }) => {
 
   return (
-    <CardContent sx={{paddingBottom: 0}}>
+    <CardContent sx={{paddingBottom: 0, paddingLeft: 1}}>
       <Typography variant="h5" component="div" className="mb0">
         { name }
       </Typography>

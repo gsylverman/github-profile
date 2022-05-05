@@ -35,7 +35,7 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
       <Box display="flex" justifyContent="start" alignItems="center" marginTop={1}>
         <Box component="span" className={ styles.followers }>
           <PeopleIcon />
-          <Box component="span" fontWeight="bold" marginRight="2px">
+          <Box component="span" fontWeight="bold" marginRight="4px" marginLeft="4px">
             { formattedFollowersNumber }
           </Box>
           followers

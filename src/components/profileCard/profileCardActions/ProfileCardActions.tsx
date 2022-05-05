@@ -29,18 +29,17 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
 
   return (
     <Box padding={ 1 } className={ styles.container }>
-      <Button variant="outlined" style={ { backgroundColor: "#F6F8FA" } } className={ styles.followBtn }>
+      <Button variant="outlined" style={ { backgroundColor: "#F6F8FA", textTransform: 'unset', height: 32, color: 'unset' } } className={ styles.followBtn }>
         Follow
       </Button>
       <Box display="flex" justifyContent="start" alignItems="center" marginTop={1}>
         <Box component="span" className={ styles.followers }>
-          <PeopleIcon/>
+          <PeopleIcon />
           <Box component="span" fontWeight="bold" marginRight="2px">
             { formattedFollowersNumber }
           </Box>
           followers
         </Box>
-
         <Box marginRight="4px" marginLeft="4px" component="span">
           <FiberManualRecordIcon sx={ { width: '4px', height: '8px' } }/>
         </Box>
@@ -50,19 +49,17 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
           </Box>
           following
         </Box>
-
         <Box marginRight="4px" marginLeft="4px" component="span">
           <FiberManualRecordIcon sx={ { width: '4px', height: '6px' } }/>
         </Box>
         <Box component="span" className={ styles.followers }>
-          <StarOutlineIcon sx={ { width: '16px', height: '16px' } } />
+          <StarOutlineIcon sx={ { width: '16px', height: '16px', display: 'inline-block', verticalAlign: 'middle' } } />
           <Box component="span" fontWeight="bold" marginRight="2px">
             { 1 }
           </Box>
           Stars
         </Box>
       </Box>
-
       <List>
         <ListItem className={ styles.listItem }>
           <FacebookIcon/>
@@ -85,7 +82,6 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
               { twitterUsername }
             </Box>
           </ListItem>
-
         }
       </List>
     </Box>

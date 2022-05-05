@@ -6,7 +6,7 @@ export const PeopleIcon: FunctionComponent<SvgIconProps> = (props: SvgIconProps)
 
   return (
     <SvgIcon
-      sx={ { width: 16, height: 16 } }
+      sx={ { width: 16, height: 16, display: 'inline-block', verticalAlign: 'middle' } }
       { ...props }
       aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
       className="octicon octicon-people">

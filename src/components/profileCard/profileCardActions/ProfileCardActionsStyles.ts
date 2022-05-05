@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
 
-export type ProfileCardActionsClasses = 'listItem' | 'dot' | 'followBtn' | 'followers' | 'container' | 'link' | 'faLink' | 'links';
+export type ProfileCardActionsClasses = 'listItem' | 'dot' | 'followBtn' | 'followers' | 'container' | 'link' | 'faLink';
 
 const profileCardActionsStyles = makeStyles<Theme, {}, ProfileCardActionsClasses>(
   (theme) => ({
@@ -18,9 +18,6 @@ const profileCardActionsStyles = makeStyles<Theme, {}, ProfileCardActionsClasses
         color: theme.palette.primary.main,
         cursor: 'pointer',
       }
-    },
-    links: {
-      // lineHeight: 1,
     },
     link: {
       '&:hover': {

@@ -1,0 +1,15 @@
+query GetUser($login: String!) {
+    user(login: $login) {
+        login
+        email
+        avatarUrl
+        name
+        twitterUsername
+        followers {
+            totalCount
+        }
+        following {
+            totalCount
+        }
+    }
+}

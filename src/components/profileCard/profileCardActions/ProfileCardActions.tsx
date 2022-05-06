@@ -4,17 +4,19 @@ import { PeopleIcon } from "../../../common/icons/PeopleIcon";
 import { FacebookIcon } from "../../../common/icons/FacebookIcon";
 import { TwitterIcon } from "../../../common/icons/TwitterIcon";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { Maybe } from "graphql/jsutils/Maybe";
 import profileCardActionsStyles from "./ProfileCardActionsStyles";
 import { numberFormatService } from "../../../service/numberFormatService";
+import ProfileReposStars from "./ProfileReposStars";
+import { Repository } from "../../../__generated__/graphql";
 
 export interface IProfileCardActionsProps {
   totalFollowers: number | undefined;
   totalFollowing: number | undefined;
   twitterUsername: Maybe<string> | undefined;
   email: Maybe<string> | undefined;
+  repositoriesNames: Maybe<Maybe<Repository>[]> | undefined;
 }
 
 const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
@@ -22,6 +24,7 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
  totalFollowers,
  twitterUsername,
  email,
+ repositoriesNames,
 }) => {
   const styles = profileCardActionsStyles();
   const formattedFollowersNumber = numberFormatService.nFormatter(totalFollowers);
@@ -53,11 +56,7 @@ const ProfileCardActions: FunctionComponent<IProfileCardActionsProps> = ({
           <FiberManualRecordIcon sx={ { width: '4px', height: '6px' } }/>
         </Box>
         <Box component="span" className={ styles.followers }>
-          <StarOutlineIcon sx={ { width: '16px', height: '16px', display: 'inline-block', verticalAlign: 'middle' } } />
-          <Box component="span" fontWeight="bold" marginRight="2px">
-            { 1 }
-          </Box>
-          Stars
+          <ProfileReposStars repositoriesNames={repositoriesNames} />
         </Box>
       </Box>
       <List>

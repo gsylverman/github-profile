@@ -15,5 +15,6 @@ export const numberFormatService = {
       return num >= item.value;
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
-  }
+  },
+
 }

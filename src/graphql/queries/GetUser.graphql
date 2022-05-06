@@ -1,4 +1,4 @@
-query GetUser($login: String!) {
+query GetUser($login: String!, $number_of_repos: Int!) {
     user(login: $login) {
         login
         email
@@ -10,6 +10,11 @@ query GetUser($login: String!) {
         }
         following {
             totalCount
+        }
+        repositories(last: $number_of_repos) {
+            nodes {
+                name
+            }
         }
     }
 }

@@ -7,7 +7,8 @@
       "Default GraphQL Endpoint": {
         "url": "https://api.github.com/graphql",
         "headers": {
-          "user-agent": "JS GraphQL"
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer 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"
         },
         "introspect": true
       }

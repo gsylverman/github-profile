@@ -13,6 +13,8 @@ const profileCardActionsStyles = makeStyles<Theme, {}, ProfileCardActionsClasses
       width: '100%',
     },
     followers: {
+      display: 'flex',
+      alignItems: 'end',
       fontSize: '14px',
       '&:hover': {
         color: theme.palette.primary.main,

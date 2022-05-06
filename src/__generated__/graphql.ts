@@ -23683,16 +23683,63 @@ export type WorkflowRunPendingDeploymentRequestsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-export type GetUserQueryVariables = Exact<{
-  login: Scalars['String'];
+export type GetRepositoryStarsCountQueryVariables = Exact<{
+  owner: Scalars['String'];
+  name: Scalars['String'];
 }>;
 
 
-export type GetUserQuery = { __typename?: 'Query', user?: { __typename?: 'User', login: string, email: string, avatarUrl: any, name?: string | null, twitterUsername?: string | null, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number } } | null };
+export type GetRepositoryStarsCountQuery = { __typename?: 'Query', repository?: { __typename?: 'Repository', stargazers: { __typename?: 'StargazerConnection', totalCount: number } } | null };
+
+export type GetUserQueryVariables = Exact<{
+  login: Scalars['String'];
+  number_of_repos: Scalars['Int'];
+}>;
 
 
+export type GetUserQuery = { __typename?: 'Query', user?: { __typename?: 'User', login: string, email: string, avatarUrl: any, name?: string | null, twitterUsername?: string | null, followers: { __typename?: 'FollowerConnection', totalCount: number }, following: { __typename?: 'FollowingConnection', totalCount: number }, repositories: { __typename?: 'RepositoryConnection', nodes?: Array<{ __typename?: 'Repository', name: string } | null> | null } } | null };
+
+
+export const GetRepositoryStarsCountDocument = gql`
+    query GetRepositoryStarsCount($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    stargazers {
+      totalCount
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetRepositoryStarsCountQuery__
+ *
+ * To run a query within a React component, call `useGetRepositoryStarsCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRepositoryStarsCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRepositoryStarsCountQuery({
+ *   variables: {
+ *      owner: // value for 'owner'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useGetRepositoryStarsCountQuery(baseOptions: Apollo.QueryHookOptions<GetRepositoryStarsCountQuery, GetRepositoryStarsCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRepositoryStarsCountQuery, GetRepositoryStarsCountQueryVariables>(GetRepositoryStarsCountDocument, options);
+      }
+export function useGetRepositoryStarsCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRepositoryStarsCountQuery, GetRepositoryStarsCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRepositoryStarsCountQuery, GetRepositoryStarsCountQueryVariables>(GetRepositoryStarsCountDocument, options);
+        }
+export type GetRepositoryStarsCountQueryHookResult = ReturnType<typeof useGetRepositoryStarsCountQuery>;
+export type GetRepositoryStarsCountLazyQueryHookResult = ReturnType<typeof useGetRepositoryStarsCountLazyQuery>;
+export type GetRepositoryStarsCountQueryResult = Apollo.QueryResult<GetRepositoryStarsCountQuery, GetRepositoryStarsCountQueryVariables>;
 export const GetUserDocument = gql`
-    query GetUser($login: String!) {
+    query GetUser($login: String!, $number_of_repos: Int!) {
   user(login: $login) {
     login
     email
@@ -23704,6 +23751,11 @@ export const GetUserDocument = gql`
     }
     following {
       totalCount
+    }
+    repositories(last: $number_of_repos) {
+      nodes {
+        name
+      }
     }
   }
 }
@@ -23722,6 +23774,7 @@ export const GetUserDocument = gql`
  * const { data, loading, error } = useGetUserQuery({
  *   variables: {
  *      login: // value for 'login'
+ *      number_of_repos: // value for 'number_of_repos'
  *   },
  * });
  */

@@ -15,12 +15,12 @@ const ProfileCard: FunctionComponent = () => {
   const styles = profileCardStyles();
   const { loginId } = useParams();
   const [userData, setUserData] = useState<User>();
-  const { data, loading } = useGetUserQuery({
+  const { data, loading, error } = useGetUserQuery({
     variables: {
       login: loginId ?? '',
-    }
+      number_of_repos: 100,
+    },
   });
-
   useEffect(() => {
     if (data) {
       setUserData(data.user as User);
@@ -46,6 +46,7 @@ const ProfileCard: FunctionComponent = () => {
           totalFollowing={ userData?.following.totalCount }
           twitterUsername={ userData?.twitterUsername }
           email={ userData?.email }
+          repositoriesNames={userData?.repositories?.nodes}
         />
       </Card>
     </Box>

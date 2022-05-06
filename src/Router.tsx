@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { FunctionComponent, lazy, Suspense } from "react";
+import Home from "./pages/Home";
 
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 
@@ -9,9 +10,7 @@ const Router: FunctionComponent = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={
-          <Suspense fallback={ <div></div> }>
-            <div>Home</div>
-          </Suspense>
+            <Home />
         }/>
         <Route path="/:loginId" element={
           <Suspense fallback={ <div></div> }>

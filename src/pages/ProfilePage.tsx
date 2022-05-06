@@ -7,6 +7,7 @@ const ProfilePage: FunctionComponent = () => {
   return (
     <Layout>
       <ProfileCard/>
+
     </Layout>
   );
 }
